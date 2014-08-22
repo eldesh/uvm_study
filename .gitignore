@@ -1,0 +1,5 @@
+csrc/
+vc_hdrs.h
+simv
+simv.daidir/
+*.swp

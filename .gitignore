@@ -1,5 +1,6 @@
 csrc/
+*.daidir/
+log/
 vc_hdrs.h
-simv
-simv.daidir/
+ucli.key
 *.swp

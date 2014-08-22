@@ -17,6 +17,15 @@ logdir_mk:
 $(TARGET): $(SVSRCS)
 	vcs $(SVFLAGS) $(UVMFLAGS) -l $(LOG_DIR)/$@.log -o $@ $(SVSRCS)
 
+.PHONY: run
+run: $(TARGET)
+	./$(TARGET) +UVM_TESTNAME="sample_test"
+
+.PHONY: failrun
+failrun: $(TARGET)
+	# will occur the error '...is not registered with the factory'
+	./$(TARGET) +UVM_TESTNAME="foobar"
+
 .PHONY: clean
 clean:
 	-rm -rf csrc

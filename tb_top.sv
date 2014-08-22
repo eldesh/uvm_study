@@ -17,7 +17,7 @@ module tb_top;
 	endclass
 
 	initial begin
-		run_test("sample_test");
+		run_test();
 	end
 endmodule
 

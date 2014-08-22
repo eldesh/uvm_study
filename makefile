@@ -1,6 +1,7 @@
 
 LOG_DIR  = log
-SVSRCS   = tb_top.sv
+TOPSRC   = tb_top.sv
+SVSRCS   = $(TOPSRC) sample_test.sv
 TARGET   = uvm_hw
 SVFLAGS  = -full64 -nc -sverilog
 UVMFLAGS = -ntb_opts uvm \
@@ -15,7 +16,7 @@ logdir_mk:
 	@mkdir -p $(LOG_DIR)
 
 $(TARGET): $(SVSRCS)
-	vcs $(SVFLAGS) $(UVMFLAGS) -l $(LOG_DIR)/$@.log -o $@ $(SVSRCS)
+	vcs $(SVFLAGS) $(UVMFLAGS) -l $(LOG_DIR)/$@.log -o $@ $(TOPSRC)
 
 .PHONY: run
 run: $(TARGET)

@@ -5,8 +5,12 @@ MODEL_DIR = model
 TOPSRC   = tb_top.sv
 SVSRCS   = $(TOPSRC) \
 		   sample_test.sv \
-		   $(MODEL_DIR)/sample_model.svh \
-		   $(MODEL_DIR)/sample_env.sv
+		   $(MODEL_DIR)/sample_model.svh    \
+		   $(MODEL_DIR)/sample_env.sv       \
+		   $(MODEL_DIR)/sample_monitor.sv   \
+		   $(MODEL_DIR)/sample_sequencer.sv \
+		   $(MODEL_DIR)/sample_driver.sv    \
+		   $(MODEL_DIR)/sample_agent.sv
 
 TARGET   = uvm_hw
 SVFLAGS  = -full64 -nc -sverilog +incdir+$(MODEL_DIR)

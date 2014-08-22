@@ -1,9 +1,15 @@
 
-LOG_DIR  = log
+LOG_DIR   = log
+MODEL_DIR = model
+
 TOPSRC   = tb_top.sv
-SVSRCS   = $(TOPSRC) sample_test.sv
+SVSRCS   = $(TOPSRC) \
+		   sample_test.sv \
+		   $(MODEL_DIR)/sample_model.svh \
+		   $(MODEL_DIR)/sample_env.sv
+
 TARGET   = uvm_hw
-SVFLAGS  = -full64 -nc -sverilog
+SVFLAGS  = -full64 -nc -sverilog +incdir+$(MODEL_DIR)
 UVMFLAGS = -ntb_opts uvm \
 		   +incdir+/home2/tools/synopsys/vcs-mx_vI-2014.03/etc/uvm-1.1 \
 		   +define+UVM_NO_DEPRECATED \

@@ -5,6 +5,7 @@ module tb_top;
 	`include "uvm_macros.svh"
 	import uvm_pkg::*;
 
+	`include "sample_model.svh"
 	`include "sample_test.sv"
 
 	initial begin

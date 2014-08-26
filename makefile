@@ -10,7 +10,12 @@ SVSRCS   = $(TOPSRC) \
 		   $(MODEL_DIR)/sample_monitor.sv   \
 		   $(MODEL_DIR)/sample_sequencer.sv \
 		   $(MODEL_DIR)/sample_driver.sv    \
-		   $(MODEL_DIR)/sample_agent.sv
+		   $(MODEL_DIR)/sample_agent.sv     \
+		   $(MODEL_DIR)/sample_if.sv        \
+		   $(MODEL_DIR)/sample_seq_item.sv  \
+		   $(MODEL_DIR)/sample_seq_lib.sv   \
+		   $(MODEL_DIR)/sample_if.sv        \
+		   $(MODEL_DIR)/write_seq.sv
 
 TARGET   = uvm_hw
 SVFLAGS  = -full64 -nc -sverilog +incdir+$(MODEL_DIR)
@@ -26,7 +31,7 @@ logdir_mk:
 	@mkdir -p $(LOG_DIR)
 
 $(TARGET): $(SVSRCS)
-	vcs $(SVFLAGS) $(UVMFLAGS) -l $(LOG_DIR)/$@.log -o $@ $(TOPSRC)
+	vcs $(SVFLAGS) $(UVMFLAGS) -l $(LOG_DIR)/$@.log -o $@ $(TOPSRC) model/sample_if.sv
 
 .PHONY: run
 run: $(TARGET)

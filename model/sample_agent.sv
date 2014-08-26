@@ -17,6 +17,12 @@ class sample_agent extends uvm_agent;
 		sequencer = sample_sequencer::type_id::create("sequencer", this);
 	endfunction
 
+	function void connect_phase (uvm_phase phase);
+		if (get_is_active() == UVM_ACTIVE) begin
+			driver.seq_item_port.connect(sequencer.seq_item_export);
+		end
+	endfunction
+
 	task run_phase (uvm_phase phase);
 		uvm_report_info("AGENT", "Hi");
 	endtask

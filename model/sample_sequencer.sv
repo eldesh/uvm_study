@@ -1,5 +1,5 @@
 
-class sample_sequencer extends uvm_sequencer;
+class sample_sequencer extends uvm_sequencer#(sample_seq_item);
 	`uvm_component_utils(sample_sequencer)
 
 	function new (string name, uvm_component parent);
@@ -10,5 +10,4 @@ class sample_sequencer extends uvm_sequencer;
 		uvm_report_info("SEQR", "Hi");
 	endtask
 endclass
-
 

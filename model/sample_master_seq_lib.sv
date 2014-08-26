@@ -1,7 +1,7 @@
 
-class sample_base_seq extends uvm_sequence #(sample_seq_item);
+class sample_master_base_seq extends uvm_sequence #(sample_seq_item);
 
-	function new (string name="sample_base_seq");
+	function new (string name="sample_master_base_seq");
 		super.new(name);
 	endfunction
 
@@ -25,4 +25,6 @@ class sample_base_seq extends uvm_sequence #(sample_seq_item);
 		end
 	endtask
 endclass
+
+`include "write_seq.sv"
 

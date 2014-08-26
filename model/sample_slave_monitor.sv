@@ -1,8 +1,8 @@
 
-class sample_monitor extends uvm_monitor;
+class sample_slave_monitor extends uvm_monitor;
 	virtual sample_if vif;
 	
-	`uvm_component_utils(sample_monitor)
+	`uvm_component_utils(sample_slave_monitor)
 
 	function new (string name, uvm_component parent);
 		super.new (name, parent);

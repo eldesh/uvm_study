@@ -1,7 +1,8 @@
 
 class sample_seq_item extends uvm_sequence_item;
-	byte addr, data;
+	logic [7:0] addr, wdata, rdata;
 	bit  write;
+	bit  [3:0] wait_cycle;
 
 	`uvm_object_utils(sample_seq_item)
 	

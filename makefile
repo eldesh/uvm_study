@@ -5,16 +5,21 @@ MODEL_DIR = model
 TOPSRC   = tb_top.sv
 SVSRCS   = $(TOPSRC) \
 		   sample_test.sv \
-		   $(MODEL_DIR)/sample_model.svh    \
-		   $(MODEL_DIR)/sample_env.sv       \
-		   $(MODEL_DIR)/sample_monitor.sv   \
-		   $(MODEL_DIR)/sample_sequencer.sv \
-		   $(MODEL_DIR)/sample_driver.sv    \
-		   $(MODEL_DIR)/sample_agent.sv     \
-		   $(MODEL_DIR)/sample_if.sv        \
-		   $(MODEL_DIR)/sample_seq_item.sv  \
-		   $(MODEL_DIR)/sample_seq_lib.sv   \
-		   $(MODEL_DIR)/sample_if.sv        \
+		   $(MODEL_DIR)/sample_model.svh           \
+		   $(MODEL_DIR)/sample_env.sv              \
+		   $(MODEL_DIR)/sample_master_monitor.sv   \
+		   $(MODEL_DIR)/sample_master_sequencer.sv \
+		   $(MODEL_DIR)/sample_master_driver.sv    \
+		   $(MODEL_DIR)/sample_master_agent.sv     \
+		   $(MODEL_DIR)/sample_master_seq_lib.sv   \
+		   $(MODEL_DIR)/sample_slave_monitor.sv    \
+		   $(MODEL_DIR)/sample_slave_sequencer.sv  \
+		   $(MODEL_DIR)/sample_slave_driver.sv     \
+		   $(MODEL_DIR)/sample_slave_agent.sv      \
+		   $(MODEL_DIR)/sample_slave_seq_lib.sv    \
+		   $(MODEL_DIR)/sample_if.sv               \
+		   $(MODEL_DIR)/sample_seq_item.sv         \
+		   $(MODEL_DIR)/sample_if.sv               \
 		   $(MODEL_DIR)/write_seq.sv
 
 TARGET   = uvm_hw

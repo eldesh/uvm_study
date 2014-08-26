@@ -9,6 +9,13 @@ class sample_test extends uvm_test;
 
 	function void build_phase (uvm_phase phase);
 		super.build_phase(phase);
+		uvm_config_db#(uvm_object_wrapper)::set(this
+			, "env.master.sequencer.run_phase", "default_sequence"
+				, write_seq::type_id::get());
+		uvm_config_db#(uvm_object_wrapper)::set(this
+			, "env.slave.sequencer.run_phase", "default_sequence"
+				, normal_response_seq::type_id::get());
+
 		env = sample_env::type_id::create("env", this);
 	endfunction
 

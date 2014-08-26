@@ -1,7 +1,7 @@
 
-class sample_driver extends uvm_driver#(sample_seq_item);
+class sample_master_driver extends uvm_driver#(sample_seq_item);
 	virtual sample_if vif;
-	`uvm_component_utils(sample_driver)
+	`uvm_component_utils(sample_master_driver)
 
 	function new (string name, uvm_component parent);
 		super.new(name, parent);
@@ -27,10 +27,14 @@ class sample_driver extends uvm_driver#(sample_seq_item);
 			vif.valid <= 1'b1;
 			vif.write <= req.write;
 			vif.addr  <= req.addr;
-			vif.data  <= req.data;
+
+			if (req.write == 1'b1) vif.wdata <= req.wdata;
+			@(posedge vif.ready);
+			if (req.write == 1'b0) req.rdata  = vif.rdata;
 			@(posedge vif.clk);
 			vif.valid <= 1'b0;
-			seq_item_port.item_done(rsp);
+
+			seq_item_port.item_done(req);
 		end
 	endtask
 endclass

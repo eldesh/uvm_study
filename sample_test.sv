@@ -1,7 +1,7 @@
 
 class sample_test extends uvm_test;
 	`uvm_component_utils(sample_test)
-	sample_env env;
+	tb_env tb;
 
 	function new (string name="sample_test", uvm_component parent=null);
 		super.new(name, parent);
@@ -10,13 +10,13 @@ class sample_test extends uvm_test;
 	function void build_phase (uvm_phase phase);
 		super.build_phase(phase);
 		uvm_config_db#(uvm_object_wrapper)::set(this
-			, "env.master.sequencer.run_phase", "default_sequence"
-				, write_seq::type_id::get());
+			, "tb.sample_model.master.sequencer.run_phase", "default_sequence"
+				, write_read_seq::type_id::get());
 		uvm_config_db#(uvm_object_wrapper)::set(this
-			, "env.slave.sequencer.run_phase", "default_sequence"
+			, "tb.sample_model.slave.sequencer.run_phase", "default_sequence"
 				, normal_response_seq::type_id::get());
 
-		env = sample_env::type_id::create("env", this);
+		tb = tb_env::type_id::create("tb", this);
 	endfunction
 
 	task run_phase (uvm_phase phase);
@@ -27,7 +27,7 @@ endclass
 
 class sample_test2 extends uvm_test;
 	`uvm_component_utils(sample_test2)
-	sample_env env;
+	tb_env tb;
 
 	function new (string name="sample_test2", uvm_component parent=null);
 		super.new(name, parent);
@@ -36,13 +36,13 @@ class sample_test2 extends uvm_test;
 	function void build_phase (uvm_phase phase);
 		super.build_phase(phase);
 		uvm_config_db#(uvm_object_wrapper)::set(this
-			, "env.master.sequencer.run_phase", "default_sequence"
-				, write_seq::type_id::get());
+			, "tb.sample_model.master.sequencer.run_phase", "default_sequence"
+				, write_read_seq::type_id::get());
 		uvm_config_db#(uvm_object_wrapper)::set(this
-			, "env.slave.sequencer.run_phase", "default_sequence"
+			, "tb.sample_model.slave.sequencer.run_phase", "default_sequence"
 				, random_response_seq::type_id::get());
 
-		env = sample_env::type_id::create("env", this);
+		tb = tb_env::type_id::create("tb", this);
 	endfunction
 
 	task run_phase (uvm_phase phase);

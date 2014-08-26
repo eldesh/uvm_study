@@ -1,6 +1,11 @@
 
-LOG_DIR   = log
-MODEL_DIR = model
+LOG_DIR       = log
+MODEL_DIR     = model
+LIB_DIR       = lib
+TESTBENCH_DIR = tb
+
+INCLUDE_DIR  = $(MODEL_DIR) $(LIB_DIR) $(TESTBENCH_DIR)
+INCLUDE_FLAG = $(addprefix +incdir+, $(INCLUDE_DIR))
 
 TOPSRC   = tb_top.sv
 SVSRCS   = $(TOPSRC) \
@@ -20,10 +25,13 @@ SVSRCS   = $(TOPSRC) \
 		   $(MODEL_DIR)/sample_if.sv               \
 		   $(MODEL_DIR)/sample_seq_item.sv         \
 		   $(MODEL_DIR)/sample_if.sv               \
-		   $(MODEL_DIR)/write_seq.sv
+		   $(MODEL_DIR)/write_seq.sv               \
+		   $(MODEL_DIR)/sample_scrbd_item.sv       \
+		   $(TESTBENCH_DIR)/tb_env.sv              \
+		   $(LIB_DIR)/uvm_component/gp_scoreboard.sv
 
 TARGET   = uvm_hw
-SVFLAGS  = -full64 -nc -sverilog +incdir+$(MODEL_DIR)
+SVFLAGS  = -full64 -nc -sverilog $(INCLUDE_FLAG)
 UVMFLAGS = -ntb_opts uvm \
 		   +incdir+/home2/tools/synopsys/vcs-mx_vI-2014.03/etc/uvm-1.1 \
 		   +define+UVM_NO_DEPRECATED \

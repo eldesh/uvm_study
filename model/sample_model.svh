@@ -1,6 +1,7 @@
 `include "sample_seq_item.sv"
 `include "sample_master_seq_lib.sv"
 `include "sample_slave_seq_lib.sv"
+`include "sample_scrbd_item.sv"
 
 `include "sample_master_driver.sv"
 `include "sample_master_monitor.sv"

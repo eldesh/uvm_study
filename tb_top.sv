@@ -5,7 +5,10 @@ module tb_top;
 	`include "uvm_macros.svh"
 	import uvm_pkg::*;
 
+	`include "uvm_component/gp_scoreboard.sv"
+
 	`include "sample_model.svh"
+	`include "tb_env.sv"
 	`include "sample_test.sv"
 
 	logic clk, rstz;
@@ -24,7 +27,7 @@ module tb_top;
 
 	initial begin
 		uvm_config_db#(virtual sample_if)
-				::set(uvm_root::get(), "*.env.*", "vif", vif);
+				::set(uvm_root::get(), "", "vif", vif);
 		run_test();
 	end
 endmodule

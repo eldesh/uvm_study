@@ -40,7 +40,10 @@ $(TARGET): $(SVSRCS)
 
 .PHONY: run
 run: $(TARGET)
+	@echo "run sample_test ..."
 	./$(TARGET) +UVM_TESTNAME="sample_test"
+	@echo "run sample_test2 ..."
+	./$(TARGET) +UVM_TESTNAME="sample_test2"
 
 .PHONY: failrun
 failrun: $(TARGET)

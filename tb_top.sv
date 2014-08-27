@@ -9,6 +9,7 @@ module tb_top;
 	`include "uvm_component/gp_scoreboard.sv"
 
 	`include "sample_model.svh"
+	`include "sample_master_chg_monitor.sv"
 	`include "tb_env.sv"
 	`include "sample_test.sv"
 

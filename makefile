@@ -13,6 +13,7 @@ SVSRCS   = $(TOPSRC) \
 		   $(MODEL_DIR)/sample_model.svh           \
 		   $(MODEL_DIR)/sample_env.sv              \
 		   $(MODEL_DIR)/sample_master_monitor.sv   \
+		   $(MODEL_DIR)/sample_master_chg_monitor.sv   \
 		   $(MODEL_DIR)/sample_master_sequencer.sv \
 		   $(MODEL_DIR)/sample_master_driver.sv    \
 		   $(MODEL_DIR)/sample_master_agent.sv     \

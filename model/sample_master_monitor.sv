@@ -42,7 +42,7 @@ class sample_master_monitor extends uvm_monitor;
 		end
 	endtask
 
-	task scrbd_write;
+	virtual task scrbd_write;
 		sample_scrbd_item item;
 		forever begin
 			@scrbd_e;

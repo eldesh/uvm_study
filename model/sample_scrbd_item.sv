@@ -1,6 +1,7 @@
 
 class sample_scrbd_item extends uvm_object;
 	bit [7:0] addr, data;
+	bit [7:0] `_GP_SCOREBOARD_MODE2_MARK;
 	
 	`uvm_object_utils_begin(sample_scrbd_item)
 		`uvm_field_int(addr, UVM_DEFAULT)

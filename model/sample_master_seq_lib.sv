@@ -27,4 +27,6 @@ class sample_master_base_seq extends uvm_sequence #(sample_seq_item);
 endclass
 
 `include "write_seq.sv"
+`include "write_read_all_seq.sv"
+`include "write_read_rand_all_seq.sv"
 

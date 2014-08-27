@@ -26,16 +26,21 @@ SVSRCS   = $(TOPSRC) \
 		   $(MODEL_DIR)/sample_seq_item.sv         \
 		   $(MODEL_DIR)/sample_if.sv               \
 		   $(MODEL_DIR)/write_seq.sv               \
+		   $(MODEL_DIR)/write_read_all_seq.sv      \
+		   $(MODEL_DIR)/write_read_rand_all_seq.sv \
 		   $(MODEL_DIR)/sample_scrbd_item.sv       \
 		   $(TESTBENCH_DIR)/tb_env.sv              \
 		   $(LIB_DIR)/uvm_component/gp_scoreboard.sv
 
 TARGET   = uvm_hw
-SVFLAGS  = -full64 -nc -sverilog $(INCLUDE_FLAG)
+SVFLAGS  = -full64 -nc -sverilog $(INCLUDE_FLAG) -licqueue
 UVMFLAGS = -ntb_opts uvm \
 		   +incdir+/home2/tools/synopsys/vcs-mx_vI-2014.03/etc/uvm-1.1 \
 		   +define+UVM_NO_DEPRECATED \
 		   +define+UVM_NO_RELNOTES
+
+SIM_TIMEOUT = 320000
+
 
 all: logdir_mk $(TARGET)
 
@@ -49,9 +54,13 @@ $(TARGET): $(SVSRCS)
 .PHONY: run
 run: $(TARGET)
 	@echo "run sample_test ..."
-	./$(TARGET) +UVM_TESTNAME="sample_test"
+	./$(TARGET) +UVM_TESTNAME="sample_test" +UVM_TIMEOUT=$(SIM_TIMEOUT) | tee $(LOG_DIR)/sample_test.log
 	@echo "run sample_test2 ..."
-	./$(TARGET) +UVM_TESTNAME="sample_test2"
+	./$(TARGET) +UVM_TESTNAME="sample_test2" +UVM_TIMEOUT=$(SIM_TIMEOUT) | tee $(LOG_DIR)/sample_test2.log
+	@echo "run sample_test3 ..."
+	./$(TARGET) +UVM_TESTNAME="sample_test3" +UVM_TIMEOUT=$(SIM_TIMEOUT) | tee $(LOG_DIR)/sample_test3.log
+	@echo "run sample_test4 ..."
+	./$(TARGET) +UVM_TESTNAME="sample_test4" +UVM_TIMEOUT=$(SIM_TIMEOUT) | tee $(LOG_DIR)/sample_test4.log
 
 .PHONY: failrun
 failrun: $(TARGET)

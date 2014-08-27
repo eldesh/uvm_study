@@ -50,9 +50,11 @@ class sample_master_monitor extends uvm_monitor;
 			item.addr = vif.addr;
 			if (vif.write === 1'b1) begin
 				item.data = vif.wdata;
+				item.`_GP_SCOREBOARD_MODE2_MARK = vif.addr;
 				ap_write.write(item);
 			end else if (vif.write === 1'b0) begin
 				item.data = vif.rdata;
+				item.`_GP_SCOREBOARD_MODE2_MARK = vif.addr;
 				ap_read.write(item);
 			end
 		end

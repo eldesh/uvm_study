@@ -1,5 +1,6 @@
 
 //`timescale 1ps/1ps
+`define _GP_SCOREBOARD_MODE2_MARK mark
 
 module tb_top;
 	`include "uvm_macros.svh"

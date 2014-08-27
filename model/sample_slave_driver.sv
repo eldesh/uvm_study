@@ -36,7 +36,7 @@ class sample_slave_driver extends uvm_driver#(sample_seq_item);
 			end
 
 			@(posedge vif.clk) vif.ready <= 1'b0;
-			seq_item_port.item_done(req);
+			seq_item_port.item_done();
 		end
 	endtask
 
@@ -51,4 +51,5 @@ class sample_slave_driver extends uvm_driver#(sample_seq_item);
 			return 8'hXX;
 	endfunction
 endclass
+
 
